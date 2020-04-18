@@ -1,4 +1,4 @@
-def GCD (n,m):
+def GCD (n,m):  # 유클리드 호제법
     if n < m:
         tmp = n
         n = m
