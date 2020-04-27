@@ -4,5 +4,5 @@ li = []
 for i in range(N):
     li.append('*')
     str = ''.join(li)
-    print(str.rjust(N))
+    print(str.rjust(N)) 
 
