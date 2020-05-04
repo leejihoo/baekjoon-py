@@ -1,17 +1,26 @@
-def binary_search(key, list1):
+def LowerBound(key, list1):
     len1 = len(list1)
-    list1 = list(list1)
     low = 0
-    high = len1-1
+    high = len1
     while low < high:
         mid = (low+high)//2
         if key > list1[mid]:
             low = mid + 1
-        elif key < list1[mid]:
-            high = mid - 1
         else:
-            return mid
-    return -1
+            high = mid
+    return high + 1
+
+def UpperBound(key, list1):
+    len1 = len(list1)
+    low = 0
+    high = len1
+    while low < high:
+        mid = (low+high)//2
+        if key >= list1[mid]:
+            low = mid + 1
+        else:
+            high = mid
+    return high + 1
 
 if __name__ == "__main__":
     N = input()
@@ -21,11 +30,9 @@ if __name__ == "__main__":
     M = input()
     M = int(M)
     li2 = list(map(int, input().split()))
-    di = dict()
-    li3 = [0 for i in range(len(set1))]
-    for i in li1:
-        if binary_search(i, set1) > 0:
-            li3[binary_search(i, set1)] = li3[binary_search(i, set1)] + 1
+    li1.sort()
     for i in li2:
-        print(li3[binary_search(i, set1)], end='')
+        Low = LowerBound(i, li1)
+        Up = UpperBound(i, li1)
+        print(Up-Low, end=" ")
 
